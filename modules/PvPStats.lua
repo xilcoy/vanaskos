@@ -29,6 +29,7 @@ local GetMapNameByID = GetMapNameByID
 local GetCursorPosition = GetCursorPosition
 local hashName = VanasKoS.hashName
 local hashGuild = VanasKoS.hashGuild
+local lformat = VanasKoS.lformat
 
 -- Constants
 local PLAYERS_LIST = 1
@@ -969,8 +970,8 @@ function VanasKoSPvPStats:SetWinLossStatsPie(wins, losses)
 			self.statPie:CompletePie(GREEN)
 		end
 		winpercent = (1.0-losspercent)
-		self.statPie.line1:SetText(format(L["Wins: |cff00ff00%d|r (%.1f%%)"], wins, winpercent*100))
-		self.statPie.line2:SetText(format(L["Losses: |cffff0000%d|r (%.1f%%)"], losses, losspercent*100))
+		self.statPie.line1:SetText(lformat(L["Wins: |cff00ff00%d|r (%.1f%%)"], wins, winpercent*100))
+		self.statPie.line2:SetText(lformat(L["Losses: |cffff0000%d|r (%.1f%%)"], losses, losspercent*100))
 	else
 		PieText1:SetText("")
 		PieText2:SetText("")

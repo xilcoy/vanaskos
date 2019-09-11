@@ -24,11 +24,11 @@ if L then
 	L["Player KoS"] = true
 	L["_Reason Unknown_"] = "unknown"
 	L["Remove Entry"] = true
-	L["%s  |cffff00ff%s|r"] = true
-	L["%s  |cffffffffLevel %s %s %s|r |cffff00ff%s|r"] = true
+	L["%s  |cffff00ff%s|r"] = "%1$s  |cffff00ff%2$s|r"
+	L["%s  |cffffffffLevel %s %s %s|r |cffff00ff%s|r"] = "%1$s  |cffffffffLevel %2$s %3$s %4$s|r |cffff00ff%5$s|r"
 	L["Show only my entries"] = true
 	L["Only my entries"] = true
-	L["%s (last seen: %s ago)"] = true
+	L["%s (last seen: %s ago)"] = "%1$s (last seen: %2$s ago)"
 	L["%s (never seen)"] = true
 	L["sort by class"] = true
 	L["sort by creator"] = true
@@ -39,8 +39,8 @@ if L then
 	L["sort by guild"] = true
 	L["sort by owner"] = true
 	L["sort by reason"] = true
-	L["%s (%s) - Reason: %s"] = true
-	L["[%s] %s (%s) - Reason: %s"] = true
+	L["%s (%s) - Reason: %s"] = "%1$s (%2$s) - Reason: %3$s"
+	L["[%s] %s (%s) - Reason: %s"] = "[%1$s] %2$s (%3$s) - Reason: %4$s"
 	L["Wanted"] = true
 	L["Player Info"] = true
 	L["Owner"] = true

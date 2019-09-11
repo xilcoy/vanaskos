@@ -15,7 +15,7 @@ if L then
 	L["Modify only my Entries"] = true
 	L["Nicelist Color"] = true
 	L["No entry for |cff00ff00%s|r"] = true
-	L["Player: |cff00ff00%s|r is on List: |cff00ff00%s|r - Reason: |cff00ff00%s|r"] = true
+	L["Player: |cff00ff00%s|r is on List: |cff00ff00%s|r - Reason: |cff00ff00%s|r"] = "Player: |cff00ff00%1$s|r is on List: |cff00ff00%2$s|r - Reason: |cff00ff00%3$s|r"
 	L["Sets the Foreground Color for Hatelist Entries"] = true
 	L["Sets the Foreground Color for Nicelist Entries"] = true
 	L["Liked"] = true

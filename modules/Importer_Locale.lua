@@ -10,7 +10,7 @@ if L then
 	L["Imported %d player data"] = true
 	L["Imported %d list entries"] = true
 	L["Imports KoS Data from other KoS tools"] = true
-	L["Converted %d PvP stats to %d PvP log events"] = true
+	L["Converted %d PvP stats to %d PvP log events"] = "Converted %1$d PvP stats to %2$d PvP log events"
 	L["Old VanasKoS"] = true
 	L["Imports Data from old VanasKoS (backup WTF first)"] = true
 	L["unknown"] = true

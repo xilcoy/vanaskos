@@ -22,6 +22,7 @@ local format = format
 local date = date
 local hashName = VanasKoS.hashName
 local hashGuild = VanasKoS.hashGuild
+local lformat = VanasKoS.lformat
 
 -- Local Variables
 local tooltip = nil
@@ -693,16 +694,16 @@ function VanasKoSGUI:UpdateMouseOverFrame(key, hoveredType)
 				tooltip:AddLine(text)
 			end
 			if(playerdata.level and playerdata.race and playerdata.class) then
-				tooltip:AddLine(format(L['Level %s %s %s'], playerdata.level, playerdata.race, playerdata.class))
+				tooltip:AddLine(lformat(L['Level %s %s %s'], playerdata.level, playerdata.race, playerdata.class))
 			elseif(playerdata.race and playerdata.class) then
-				tooltip:AddLine(format('%s %s', playerdata.race, playerdata.class))
+				tooltip:AddLine(lformat('%s %s', playerdata.race, playerdata.class))
 			end
 			local mapInfo = playerdata.mapID and C_Map.GetMapInfo(playerdata.mapID) or nil
 			if(playerdata.lastseen) then
 				if mapInfo then
-					tooltip:AddLine(format(L['Last seen at |cff00ff00%s|r in |cff00ff00%s|r'], date("%c", playerdata.lastseen), mapInfo.name))
+					tooltip:AddLine(lformat(L['Last seen at |cff00ff00%s|r in |cff00ff00%s|r'], date("%c", playerdata.lastseen), mapInfo.name))
 				else
-					tooltip:AddLine(format(L['Last seen at |cff00ff00%s|r'], date("%c", playerdata.lastseen)))
+					tooltip:AddLine(lformat(L['Last seen at |cff00ff00%s|r'], date("%c", playerdata.lastseen)))
 				end
 			end
 		end
@@ -754,8 +755,8 @@ function VanasKoSGUI:UpdateMouseOverFrame(key, hoveredType)
 		if data.time then
 			tooltip:AddLine(date("%c", data.time))
 		end
-		tooltip:AddLine(format(L["Player: %s-%s (%s)"], data.myname or L["_UNKNOWN_NAME_"], data.myrealm or L["_UNKNOWN_REALM_"], data.mylevel or "??"))
-		tooltip:AddLine(format(L["Enemy: %s-%s (%s)"], data.name or L["_UNKNOWN_NAME_"], data.realm or L["_UNKNOWN_REALM_"], data.enemylevel or "??"))
+		tooltip:AddLine(lformat(L["Player: %s-%s (%s)"], data.myname or L["_UNKNOWN_NAME_"], data.myrealm or L["_UNKNOWN_REALM_"], data.mylevel or "??"))
+		tooltip:AddLine(lformat(L["Enemy: %s-%s (%s)"], data.name or L["_UNKNOWN_NAME_"], data.realm or L["_UNKNOWN_REALM_"], data.enemylevel or "??"))
 		if data.enemyguild then
 			tooltip:AddLine("<|cffffffff" .. data.enemyguild .. "|r>")
 		end
@@ -764,7 +765,7 @@ function VanasKoSGUI:UpdateMouseOverFrame(key, hoveredType)
 		if mapInfo then
 			local text = mapInfo.name
 			if data.x and data.y then
-				text = text .. format(" (%d, %d)", data.x * 100, data.y * 100)
+				text = text .. lformat(" (%d, %d)", data.x * 100, data.y * 100)
 			end
 			tooltip:AddLine(text)
 		end
@@ -784,7 +785,7 @@ function VanasKoSGUI:UpdateMouseOverFrame(key, hoveredType)
 		end
 
 		if(data.created) then
-			tooltip:AddLine(format(L['Created: |cffffffff%s|r'], date("%c", data.created)))
+			tooltip:AddLine(lformat(L['Created: |cffffffff%s|r'], date("%c", data.created)))
 		end
 
 		if(data.sender) then
@@ -792,7 +793,7 @@ function VanasKoSGUI:UpdateMouseOverFrame(key, hoveredType)
 		end
 
 		if(data.lastupdated) then
-			tooltip:AddLine(format(L['Last updated: |cffffffff%s|r'], date("%c", data.lastupdated)))
+			tooltip:AddLine(lformat(L['Last updated: |cffffffff%s|r'], date("%c", data.lastupdated)))
 		end
 	end
 
@@ -820,9 +821,9 @@ function VanasKoSGUI:UpdateMouseOverFrame(key, hoveredType)
 					local mapInfo = event and event.mapID and C_Map.GetMapInfo(event.mapID) or nil
 					local mapName = mapInfo and mapInfo.name or L["Unknown area"]
 					if event and event.type == 'win' then
-						tooltip:AddLine(format(L["%s: |cff00ff00Win|r |cffffffffin %s (|r|cffff00ff%s|r|cffffffff)|r"], date("%c", event.time), mapName, event.myname or L["Unknown player"]))
+						tooltip:AddLine(lformat(L["%s: |cff00ff00Win|r |cffffffffin %s (|r|cffff00ff%s|r|cffffffff)|r"], date("%c", event.time), mapName, event.myname or L["Unknown player"]))
 					elseif event and event.type == 'loss' then
-						tooltip:AddLine(format(L["%s: |cffff0000Loss|r |cffffffffin %s (|r|cffff00ff%s|r|cffffffff)|r"], date("%c", event.time), mapName, event.myname or L["Unknown player"]))
+						tooltip:AddLine(lformat(L["%s: |cffff0000Loss|r |cffffffffin %s (|r|cffff00ff%s|r|cffffffff)|r"], date("%c", event.time), mapName, event.myname or L["Unknown player"]))
 					end
 					if(i < #playerlog - 15) then
 						return

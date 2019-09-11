@@ -10,9 +10,9 @@ if L then
 	L["Last 24 hours"] = true
 	L["Last Month"] = true
 	L["Last Week"] = true
-	L["Losses: |cffff0000%d|r (%.1f%%)"] = true
+	L["Losses: |cffff0000%d|r (%.1f%%)"] = "Losses: |cffff0000%1$d|r (%2$.1f%%)"
 	L["PvP Stats"] = true
-	L["Wins: |cff00ff00%d|r (%.1f%%)"] = true
+	L["Wins: |cff00ff00%d|r (%.1f%%)"] = "Wins: |cff00ff00%1$d|r (%2$.1f%%)"
 	L["Enemies"] = true
 	L["Map"] = true
 	L["Date"] = true

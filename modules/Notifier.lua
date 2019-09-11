@@ -28,6 +28,7 @@ local PlaySoundFile = PlaySoundFile
 local splitNameRealm = VanasKoS.splitNameRealm
 local hashName = VanasKoS.hashName
 local hashGuild = VanasKoS.hashGuild
+local lformat = VanasKoS.lformat
 
 -- Constants
 local FADE_IN_TIME = 0.2
@@ -777,7 +778,7 @@ function VanasKoSNotifier:GROUP_ROSTER_UPDATE()
 					texture:SetVertexColor(1.0, 0.0, 0.0, texture:GetAlpha())
 				end
 				if(not lastPartyUpdate[key]) then
-					local msg = format(L["Hated player \"%s\" (%s) is in your party"], name, hate.reason or "")
+					local msg = lformat(L["Hated player \"%s\" (%s) is in your party"], name, hate.reason or "")
 					if(self.db.profile.notifyVisual) then
 						UIErrorsFrame:AddMessage(msg, 1.0, 1.0, 1.0, 1.0, UIERRORS_HOLD_TIME)
 					end
@@ -797,7 +798,7 @@ function VanasKoSNotifier:GROUP_ROSTER_UPDATE()
 					texture:SetVertexColor(0.0, 1.0, 0.0, texture:GetAlpha())
 				end
 				if(not lastPartyUpdate[key]) then
-					local msg = format(L["Nice player \"%s\" (%s) is in your party"], name, nice.reason or "")
+					local msg = lformat(L["Nice player \"%s\" (%s) is in your party"], name, nice.reason or "")
 					if(self.db.profile.notifyVisual) then
 						UIErrorsFrame:AddMessage(msg, 1.0, 1.0, 1.0, 1.0, UIERRORS_HOLD_TIME)
 					end
@@ -831,7 +832,7 @@ function VanasKoSNotifier:RAID_ROSTER_UPDATE()
 			local hate = VanasKoS:IsOnList("HATELIST", key)
 			local nice = VanasKoS:IsOnList("NICELIST", key)
 			if(hate) then
-				local msg = format(L["Hated player \"%s\" (%s) is in your raid"], name, hate.reason or "")
+				local msg = lformat(L["Hated player \"%s\" (%s) is in your raid"], name, hate.reason or "")
 				if(self.db.profile.notifyVisual) then
 					UIErrorsFrame:AddMessage(msg, 1.0, 1.0, 1.0, 1.0, UIERRORS_HOLD_TIME)
 				end
@@ -844,7 +845,7 @@ function VanasKoSNotifier:RAID_ROSTER_UPDATE()
 				end
 				self:PlaySound(self.db.profile.hatePlayName)
 			elseif(nice) then
-				local msg = format(L["Nice player \"%s\" (%s) is in your raid"], name, nice.reason or "")
+				local msg = lformat(L["Nice player \"%s\" (%s) is in your raid"], name, nice.reason or "")
 				if(self.db.profile.notifyVisual) then
 					UIErrorsFrame:AddMessage(msg, 1.0, 1.0, 1.0, 1.0, UIERRORS_HOLD_TIME)
 				end
@@ -907,7 +908,7 @@ function VanasKoSNotifier:OnTooltipSetUnit(tooltip, ...)
 		local playerdata = VanasKoS:IsOnList("PLAYERDATA", key)
 
 		if(data or playerdata) then
-			tooltip:AddLine(format(L["seen: |cffffffff%d|r - wins: |cff00ff00%d|r - losses: |cffff0000%d|r"],
+			tooltip:AddLine(lformat(L["seen: |cffffffff%d|r - wins: |cff00ff00%d|r - losses: |cffff0000%d|r"],
 				(playerdata and playerdata.seen) or 0, (data and data.wins) or 0, (data and data.losses) or 0))
 		end
 	end
@@ -937,7 +938,7 @@ function VanasKoSNotifier:UpdateReasonFrame(name, realm, guild)
 			if(hdata and hdata.reason ~= nil) then
 				reasonFrame.text:SetTextColor(1.0, 0.0, 0.0, 1.0)
 				if(hdata.creator ~= nil and hdata.owner ~= nil)  then
-					reasonFrame.text:SetText(format(L["%sHatelist: %s"], hdata.creator, hdata.reason))
+					reasonFrame.text:SetText(lformat(L["%sHatelist: %s"], hdata.creator, hdata.reason))
 				else
 					reasonFrame.text:SetText(format(L["Hatelist: %s"], hdata.reason))
 				end
@@ -948,7 +949,7 @@ function VanasKoSNotifier:UpdateReasonFrame(name, realm, guild)
 			if(ndata and ndata.reason ~= nil) then
 				reasonFrame.text:SetTextColor(0.0, 1.0, 0.0, 1.0)
 				if(ndata.creator ~= nil and ndata.owner ~= nil)  then
-					reasonFrame.text:SetText(format(L["%sNicelist: %s"], ndata.creator, ndata.reason))
+					reasonFrame.text:SetText(lformat(L["%sNicelist: %s"], ndata.creator, ndata.reason))
 				else
 					reasonFrame.text:SetText(format(L["Nicelist: %s"], ndata.reason))
 				end
@@ -1000,15 +1001,15 @@ function VanasKoSNotifier:GetKoSString(name, guild, list_str, reason, creator, o
 	if(reason ~= nil) then
 		if(creator ~= nil and owner ~= nil) then
 			if(name == nil) then
-				msg = format("%s%s: %s", creator, list_str, reason)
+				msg = lformat("%s%s: %s", creator, list_str, reason)
 			else
-				msg = format("%s%s: %s", creator, list_str, name .. " (" .. reason .. ")")
+				msg = lformat("%s%s: %s", creator, list_str, name .. " (" .. reason .. ")")
 			end
 		else
 			if(name == nil) then
-				msg = format("%s: %s", list_str, reason)
+				msg = lformat("%s: %s", list_str, reason)
 			else
-				msg = format("%s: %s", list_str, name .. " (" .. reason .. ")")
+				msg = lformat("%s: %s", list_str, name .. " (" .. reason .. ")")
 			end
 		end
 		if(guild) then
@@ -1022,15 +1023,15 @@ function VanasKoSNotifier:GetKoSString(name, guild, list_str, reason, creator, o
 	else
 		if(creator ~= nil and owner ~= nil) then
 			if(name == nil) then
-				msg = format("%s%s: %s", creator, list_str, "")
+				msg = lformat("%s%s: %s", creator, list_str, "")
 			else
-				msg = format("%s%s: %s", creator, list_str, name)
+				msg = lformat("%s%s: %s", creator, list_str, name)
 			end
 		else
 			if(name == nil) then
-				msg = format("%s: %s", list_str, "")
+				msg = lformat("%s: %s", list_str, "")
 			else
-				msg = format("%s: %s", list_str, name)
+				msg = lformat("%s: %s", list_str, name)
 			end
 		end
 		if(guild) then

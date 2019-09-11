@@ -83,17 +83,17 @@ if L then
 	L["Show in combat zones"] = true
 
 	L["KoS: %s"] = true
-	L["%sKoS: %s"] = true
+	L["%sKoS: %s"] = "%1$sKoS: %2$s"
 	L["KoS (Guild): %s"] = true
-	L["%sKoS (Guild): %s"] = true
+	L["%sKoS (Guild): %s"] = "%1$sKoS (Guild): %2$s"
 	L["Nicelist: %s"] = true
-	L["%sNicelist: %s"] = true
+	L["%sNicelist: %s"] = "%1$sNicelist: %2$s"
 	L["Hatelist: %s"] = true
-	L["%sHatelist: %s"] = true
+	L["%sHatelist: %s"] = "%1$sHatelist: %2$s"
 	L["Wanted: %s"] = true
-	L["%sWanted: %s"] = true
+	L["%sWanted: %s"] = "%1$sWanted: %2$s"
 
-	L["seen: |cffffffff%d|r - wins: |cff00ff00%d|r - losses: |cffff0000%d|r"] = true
+	L["seen: |cffffffff%d|r - wins: |cff00ff00%d|r - losses: |cffff0000%d|r"] = "seen: |cffffffff%1$d|r - wins: |cff00ff00%2$d|r - losses: |cffff0000%3$d|r"
 	L["Alignment"] = true
 	L["Sets warnframe font alignment"] = true
 	L["LEFT"] = true

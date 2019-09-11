@@ -10,6 +10,7 @@ local VanasKoSGUI = nil -- loaded after initialization
 -- declare common globals local
 local pairs = pairs
 local assert = assert
+local unpack = unpack
 local strfind = strfind
 local strsub = strsub
 local strmatch = string.match
@@ -142,8 +143,20 @@ function VanasKoS.splitNameRealm(fullname)
 	return name, realm
 end
 
+function VanasKoS.lformat(fmt, ...)
+	local args, order, cur = {...}, {...}, 1
+	fmt = fmt:gsub('%%([0-9.$]*[dfgs])', function(sub)
+		i = strmatch(sub, "^(%d+)%$") or cur
+		order[cur] = args[tonumber(i)]
+		cur = cur + 1
+		return '%' .. sub:gsub("^%d+%$", "")
+	end)
+	return format(fmt, unpack(order))
+end
+
 local hashName = VanasKoS.hashName
 local hashGuild = VanasKoS.hashGuild
+local lformat = VanasKoS.lformat
 
 function VanasKoS:ToggleModuleActive(moduleStr)
 	local module = self:GetModule(moduleStr, true)
@@ -399,7 +412,7 @@ end
 function VanasKoS:List_Entry_Added(message, list, key, data)
 	if key then
 		if data and data.reason then
-			self:Print(format(L["Entry %s (Reason: %s) added."], key, data.reason))
+			self:Print(lformat(L["Entry %s (Reason: %s) added."], key, data.reason))
 		else
 			self:Print(format(L["Entry %s added."], key))
 		end
@@ -444,7 +457,7 @@ function VanasKoS:ResetKoSList(silent)
 	self.db:ResetDB("factionrealm")
 	if(not silent) then
 		local _, faction = UnitFactionGroup("player")
-		self:Print(format(L["KoS List for Realm \"%s\" - %s now purged."], GetRealmName(), faction))
+		self:Print(lformat(L["KoS List for Realm \"%s\" - %s now purged."], GetRealmName(), faction))
 	end
 	self:SendMessage("VanasKoS_KoS_Database_Purged", GetRealmName())
 end

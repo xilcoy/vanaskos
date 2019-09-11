@@ -16,9 +16,8 @@ if L then
 	L["Reset Position"] = true
 	L["Resets the Position of the Main Window"] = true
 	L["Reason"] = true
-	L["Reason"] = true
-	L['Level %s %s %s'] = true
-	L['Last seen at |cff00ff00%s|r in |cff00ff00%s|r'] = true
+	L['Level %s %s %s'] = "Level %1$s %2$s %3$s"
+	L['Last seen at |cff00ff00%s|r in |cff00ff00%s|r'] = "Last seen at |cff00ff00%1$s|r in |cff00ff00%2$s|r"
 	L['Last seen at |cff00ff00%s|r'] = true
 	L['Owner: |cffffffff%s|r'] = true
 	L['Creator: |cffffffff%s|r'] = true
@@ -28,18 +27,18 @@ if L then
 	L["PvP Encounter:"] = true
 	L["Unknown area"] = true
 	L["Unknown player"] = true
-	L["%s: |cff00ff00Win|r |cffffffffin %s (|r|cffff00ff%s|r|cffffffff)|r"] = true
-	L["%s: |cffff0000Loss|r |cffffffffin %s (|r|cffff00ff%s|r|cffffffff)|r"] = true
+	L["%s: |cff00ff00Win|r |cffffffffin %s (|r|cffff00ff%s|r|cffffffff)|r"] = "%1$s: |cff00ff00Win|r |cffffffffin %2$s (|r|cffff00ff%3$s|r|cffffffff)|r"
+	L["%s: |cffff0000Loss|r |cffffffffin %s (|r|cffff00ff%s|r|cffffffff)|r"] = "%1$s: |cffff0000Loss|r |cffffffffin %2$s (|r|cffff00ff%3$s|r|cffffffff)|r"
 	L["Lists"] = true
 	L["About"] = true
 	L["Vanas KoS"] = true
 	L["Toggle Menu"] = true
 	L["Add KoS Player"] = true
 	L["Entry %s added."] = true
-	L["Entry %s (Reason: %s) added."] = true
+	L["Entry %s (Reason: %s) added."] = "Entry %1$s (Reason: %2$s) added."
 	L["Entry \"%s\" removed from list"] = true
 	L["_Reason Unknown_"] = "unknown"
-	L["KoS List for Realm \"%s\" - %s now purged."] = true
+	L["KoS List for Realm \"%s\" - %s now purged."] = "KoS List for Realm \"%1$s\" - %2$s now purged."
 	L["Add/Set List Entry"] = true
 	L["Realm"] = true
 	L["Battleground win"] = true
@@ -57,8 +56,8 @@ if L then
 	L["World PvP win"] = true
 	L["World PvP loss"] = true
 	L["World PvP encounter"] = true
-	L["Player: %s-%s (%s)"] = true
-	L["Enemy: %s-%s (%s)"] = true
+	L["Player: %s-%s (%s)"] = "Player: %1$s-%2$s (%3$s)"
+	L["Enemy: %s-%s (%s)"] = "Enemy: %1$s-%2$s (%3$s)"
 	L["_UNKNOWN_NAME_"] = "unknown"
 	L["_UNKNOWN_REALM_"] = "unknown"
 end

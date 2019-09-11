@@ -24,6 +24,7 @@ local GetMapNameByID = GetMapNameByID
 local GetCursorPosition = GetCursorPosition
 local IsShiftKeyDown = IsShiftKeyDown
 local UnitName = UnitName
+local lformat = VanasKoS.lformat
 
 -- Local variables
 local entryKey, entryData
@@ -681,9 +682,9 @@ function VanasKoSDefaultLists:ListButtonOnClick(button, frame)
 
 			local str
 			if(entryData.owner) then
-				str = format(L["[%s] %s (%s) - Reason: %s"], entryData.owner, entryKey, VanasKoSGUI:GetListName(VANASKOS.showList), entryData.reason)
+				str = lformat(L["[%s] %s (%s) - Reason: %s"], entryData.owner, entryKey, VanasKoSGUI:GetListName(VANASKOS.showList), entryData.reason)
 			else
-				str = format(L["%s (%s) - Reason: %s"], entryData.name, VanasKoSGUI:GetListName(VANASKOS.showList), entryData.reason)
+				str = lformat(L["%s (%s) - Reason: %s"], entryData.name, VanasKoSGUI:GetListName(VANASKOS.showList), entryData.reason)
 			end
 			if(DEFAULT_CHAT_FRAME.editBox and str) then
 				if(DEFAULT_CHAT_FRAME.editBox:IsVisible()) then

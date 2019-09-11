@@ -30,6 +30,7 @@ local GetRealmName = GetRealmName
 local UnitName = UnitName
 local IsInGuild = IsInGuild
 local hashName = VanasKoS.hashName
+local lformat = VanasKoS.lformat
 
 -- constants
 local POLICY_ACCEPT = 1
@@ -502,7 +503,7 @@ function VanasKoSSynchronizer:RequestPlayerList(player, listName)
 		return
 	end
 	if(VANASKOS.DEBUG == 1) then
-		VanasKoS:Print(format("RequestPlayerList(%s, %s)", player, listName))
+		VanasKoS:Print(lformat("RequestPlayerList(%s, %s)", player, listName))
 	end
 	requestedLists[listName][player:lower()] = true
 	LastWhispered = player
@@ -602,13 +603,13 @@ function VanasKoSSynchronizer:OnCommReceived(prefix, text, distribution, sender)
 	if(not result) then
 		-- TODO: Log
 		if(VANASKOS.DEBUG == 1) then
-			VanasKoS:Print(format("Sync: Invalid comm from %s: %s", sender, vanasKoSVersion))
+			VanasKoS:Print(lformat("Sync: Invalid comm from %s: %s", sender, vanasKoSVersion))
 		end
 		return
 	end
 
 	if(VANASKOS.DEBUG == 1) then
-		VanasKoS:Print(format("Sync: CommReceived from %s ver:%s pv:%s cmd:%s",
+		VanasKoS:Print(lformat("Sync: CommReceived from %s ver:%s pv:%s cmd:%s",
 			sender, vanasKoSVersion, protocolVersion, command))
 	end
 
@@ -646,7 +647,7 @@ function VanasKoSSynchronizer:OnCommReceived(prefix, text, distribution, sender)
 				self.db.faction.synchronizer.share[senderKey].lastsync = time()
 			else
 				if(VANASKOS.DEBUG == 1) then
-					VanasKoS:Print(format("Unsolicited %s list from %s", data.listName, sender))
+					VanasKoS:Print(lformat("Unsolicited %s list from %s", data.listName, sender))
 				end
 				if (sharedLists[sender] == nil) then
 					sharedLists[senderKey] = {list = {}}
@@ -660,7 +661,7 @@ function VanasKoSSynchronizer:OnCommReceived(prefix, text, distribution, sender)
 				end
 				if(not Dialog:ActiveDialog("VanasKoSQuestionAdd")) then
 					Dialog:Spawn("VanasKoSQuestionAdd", {
-						prompt = format(L["Accept %d entries for list %s from %s?"], count, VanasKoSGUI:GetListName(data.listName), sender),
+						prompt = lformat(L["Accept %d entries for list %s from %s?"], count, VanasKoSGUI:GetListName(data.listName), sender),
 						senderName = senderName,
 						senderRealm = senderRealm,
 						listName = data.listName,
@@ -676,7 +677,7 @@ function VanasKoSSynchronizer:OnCommReceived(prefix, text, distribution, sender)
 			end
 		elseif (distribution == "PARTY") then
 				if(VANASKOS.DEBUG == 1) then
-					VanasKoS:Print(format("Unsolicited %s list from %s in party", data.listName, sender))
+					VanasKoS:Print(lformat("Unsolicited %s list from %s in party", data.listName, sender))
 				end
 			if (sharedLists[senderKey] == nil) then
 				sharedLists[senderKey] = {list = {}}
@@ -690,7 +691,7 @@ function VanasKoSSynchronizer:OnCommReceived(prefix, text, distribution, sender)
 			end
 			if(not Dialog:ActiveDialog("VanasKoSQuestionAdd")) then
 				Dialog:Spawn("VanasKoSQuestionAdd", {
-					prompt = format(L["Accept %d entries for list %s from %s?"],
+					prompt = lformat(L["Accept %d entries for list %s from %s?"],
 						count, VanasKoSGUI:GetListName(data.listName), sender),
 					sender = sender,
 					listName = data.listName,
@@ -709,12 +710,12 @@ function VanasKoSSynchronizer:OnCommReceived(prefix, text, distribution, sender)
 			or (self.db.profile.SharePolicy == POLICY_ACCEPT and not self.db.faction.synchronizer.reject[sender])
 			or (self.db.profile.SharePolicy == POLICY_REJECT and self.db.faction.synchronizer.accept[sender])) then
 			if(VANASKOS.DEBUG == 1) then
-				VanasKoS:Print(format("Granting request from %s for %s", sender, data.listName))
+				VanasKoS:Print(lformat("Granting request from %s for %s", sender, data.listName))
 			end
 			self:SendListToPlayer(sender, data.listName)
 		else
 			if(VANASKOS.DEBUG == 1) then
-				VanasKoS:Print(format("Denying request from %s for %s", sender, data.listName))
+				VanasKoS:Print(lformat("Denying request from %s for %s", sender, data.listName))
 			end
 			self:DenyRequest(sender, data.listName)
 		end
@@ -729,7 +730,7 @@ end
 function VanasKoSSynchronizer:ProcessList(senderName, senderRealm, ownerName, ownerRealm, listName, receivedList)
 	local synctime = time()
 	if(VANASKOS.DEBUG == 1) then
-		VanasKoS:Print(format("Processing list %s from %s (%s)", listName, senderName, ownerName))
+		VanasKoS:Print(lformat("Processing list %s from %s (%s)", listName, senderName, ownerName))
 	end
 	local destList = VanasKoS:GetList(listName)
 	if(destList == nil) then
@@ -846,7 +847,7 @@ function VanasKoSSynchronizer:ClearQueuedPlayerList(senderName, senderRealm, lis
 		local count = sharedListQueue[1].count
 		tremove(sharedListQueue, 1)
 		Dialog:Spawn("VanasKoSQuestionAdd", {
-			prompt = format(L["Accept %d entries for list %s from %s?"],
+			prompt = lformat(L["Accept %d entries for list %s from %s?"],
 				count, VanasKoSGUI:GetListName(listName), senderRealm),
 			senderName = senderName,
 			senderRealm = senderRealm,

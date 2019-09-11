@@ -16,6 +16,7 @@ local WIN, LOSS = WIN, LOSS
 local ipairs = ipairs
 local pairs = pairs
 local hashName = VanasKoS.hashName
+local lformat = VanasKoS.lformat
 
 -- Constants
 local pinTemplate = "VanasKoSEventMapPinsTemplate"
@@ -211,7 +212,7 @@ function VanasKoSEventMap:Pin_OnEnter(frame, motion)
 	tooltip:SetOwner(frame, anchor)
 	if(frame.trackedPlayer) then
 		local name = frame.playerName
-		tooltip:AddLine(format("Tracking: %s (%s)", name,
+		tooltip:AddLine(lformat("Tracking: %s (%s)", name,
 					SecondsToTime(time() - trackedPlayers[name:lower()].lastseen)))
 	else
 		tooltip:AddLine(format(L["PvP Encounter"]))
@@ -249,9 +250,9 @@ function VanasKoSEventMap:Pin_OnEnter(frame, motion)
 			end
 
 			if (event.type == "loss") then
-				tooltip:AddLine(format(L["|cffff0000%s - %s killed by %s|r"], date("%c", event.time), player, enemy))
+				tooltip:AddLine(lformat(L["|cffff0000%s - %s killed by %s|r"], date("%c", event.time), player, enemy))
 			elseif (event.type == "win") then
-				tooltip:AddLine(format(L["|cff00ff00%s - %s killed %s|r"], date("%c", event.time), player, enemy))
+				tooltip:AddLine(lformat(L["|cff00ff00%s - %s killed %s|r"], date("%c", event.time), player, enemy))
 			end
 		end
 	end

@@ -50,7 +50,7 @@ if L then
 	L["Sharing - Group"] = true
 	L["Sharing - Guild"] = true
 
-	L["Accept %d entries for list %s from %s?"] = true
+	L["Accept %d entries for list %s from %s?"] = "Accept %1$d entries for list %2$s from %3$s?"
 end
 
 L = LibStub("AceLocale-3.0"):NewLocale("VanasKoS/Synchronizer", "frFR")

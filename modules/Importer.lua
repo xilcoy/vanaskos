@@ -11,6 +11,7 @@ local VanasKoSImporter = VanasKoS:NewModule("Importer", "AceEvent-3.0");
 local hashName = VanasKoS.hashName
 local hashGuild = VanasKoS.hashGuild
 local splitNameRealm = VanasKoS.splitNameRealm
+local lformat = VanasKoS.lformat
 
 -- This data was taken for HereBeDragons, glad they did the hard work here
 -- I'll just trust their data is correct...
@@ -610,7 +611,7 @@ function VanasKoSImporter:FromOldVanasKoS()
 	end
 
 	for areaID, count in pairs(unknownAreas) do
-		VanasKoS:Print(format("Unknown area ID: %d, events: %d", areaID, count))
+		VanasKoS:Print(lformat("Unknown area ID: %d, events: %d", areaID, count))
 	end
 	if (count > 0) then
 		VanasKoS:Print(format(L["Imported %d PVP events"], count))
@@ -949,7 +950,7 @@ function VanasKoSImporter:FromOldVanasKoS()
 	end
 
 	if (count > 0) then
-		VanasKoS:Print(format(L["Converted %d PvP stats to %d PvP log events"], count, eventId))
+		VanasKoS:Print(lformat(L["Converted %d PvP stats to %d PvP log events"], count, eventId))
 	end
 	if (invalid > 0) then
 		VanasKoS:Print(format("%d invalid PvP stats skipped", invalid))

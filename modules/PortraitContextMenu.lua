@@ -18,6 +18,7 @@ local GetRealmName = GetRealmName
 local splitNameRealm = VanasKoS.splitNameRealm
 local hashName = VanasKoS.hashName
 local hashGuild = VanasKoS.hashGuild
+local lformat = VanasKoS.lformat
 
 -- Local Variables
 local VanasKoSTargetPopupButtons = {}
@@ -114,7 +115,7 @@ function VanasKoSPortraitContextMenu:UnitPopup_ShowMenu(dropdownMenu, which, uni
 					data, list = VanasKoS:IsOnList(nil, hashGuild(info.guild, info.realm))
 				end
 				if list then
-					VanasKoS:Print(format(L["Player: |cff00ff00%s|r is on List: |cff00ff00%s|r - Reason: |cff00ff00%s|r"],
+					VanasKoS:Print(lformat(L["Player: |cff00ff00%s|r is on List: |cff00ff00%s|r - Reason: |cff00ff00%s|r"],
 						info.name, VanasKoS:GetListNameByShortName(list), (data.reason or "")))
 				else
 					VanasKoS:Print(format(L["No entry for |cff00ff00%s|r"], info.name))

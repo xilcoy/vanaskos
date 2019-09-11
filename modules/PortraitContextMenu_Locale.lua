@@ -9,7 +9,7 @@ if L then
 	L["Context Menu"] = true
 	L["Vanas|cffff0000KoS|r"] = true
 	L["Lookup in VanasKoS"] = true
-	L["Player: |cff00ff00%s|r is on List: |cff00ff00%s|r - Reason: |cff00ff00%s|r"] = true
+	L["Player: |cff00ff00%s|r is on List: |cff00ff00%s|r - Reason: |cff00ff00%s|r"] = "Player: |cff00ff00%1$s|r is on List: |cff00ff00%2$s|r - Reason: |cff00ff00%3$s|r"
 	L["No entry for |cff00ff00%s|r"] = true
 end
 

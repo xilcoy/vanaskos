@@ -61,22 +61,22 @@ if L then
 	L["Notify in combat zones (Wintergrasp, Tol Barad)"] = true
 
 	L["Enemy Detected:|cffff0000"] = true
-	L["Hated player \"%s\" (%s) is in your party"] = true
-	L["Nice player \"%s\" (%s) is in your party"] = true
-	L["Hated player \"%s\" (%s) is in your raid"] = true
-	L["Nice player \"%s\" (%s) is in your raid"] = true
+	L["Hated player \"%s\" (%s) is in your party"] = "Hated player \"%1$s\" (%2$s) is in your party"
+	L["Nice player \"%s\" (%s) is in your party"] = "Nice player \"%1$s\" (%2$s) is in your party"
+	L["Hated player \"%s\" (%s) is in your raid"] = "Hated player \"%1$s\" (%2$s) is in your raid"
+	L["Nice player \"%s\" (%s) is in your raid"] = "Nice player \"%1$s\" (%2$s) is in your raid"
 
-	L["seen: |cffffffff%d|r - wins: |cff00ff00%d|r - losses: |cffff0000%d|r"] = true
+	L["seen: |cffffffff%d|r - wins: |cff00ff00%d|r - losses: |cffff0000%d|r"] = "seen: |cffffffff%1$d|r - wins: |cff00ff00%2$d|r - losses: |cffff0000%3$d|r"
 	L["KoS: %s"]         = true
 	L["KoS (Guild): %s"] = true
 	L["Hatelist: %s"]    = true
 	L["Nicelist: %s"]    = true
 	L["Wanted: %s"]      = true
-	L["%sKoS: %s"]         = "|cffff00ff%s's|r KoS: %s"
-	L["%sKoS (Guild): %s"] = "|cffff00ff%s's|r KoS (Guild): %s"
-	L["%sHatelist: %s"]    = "|cffff00ff%s's|r Hatelist: %s"
-	L["%sNicelist: %s"]    = "|cffff00ff%s's|r Nicelist: %s"
-	L["%sWanted: %s"]      = "|cffff00ff%s's|r Wanted: %s"
+	L["%sKoS: %s"]         = "|cffff00ff%1$s's|r KoS: %2$s"
+	L["%sKoS (Guild): %s"] = "|cffff00ff%1$s's|r KoS (Guild): %2$s"
+	L["%sHatelist: %s"]    = "|cffff00ff%1$s's|r Hatelist: %2$s"
+	L["%sNicelist: %s"]    = "|cffff00ff%1$s's|r Nicelist: %2$s"
+	L["%sWanted: %s"]      = "|cffff00ff%1$s's|r Wanted: %2$s"
 	L["KoS"]               = true
 	L["Hatelist"]          = true
 	L["Nicelist"]          = true
